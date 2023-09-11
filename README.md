@@ -8,7 +8,7 @@ TiledCSPlus is an extended, and up to date fork of [TiledCS](https://github.com/
 * Better layer arrangement (layers will be arranged in order from top to bottom, instead of current tile layers, then object layers, and image layers at the end)
 
 ## Does it break compability?
-**YES**, practically every field was renamed to be in PascalCase, and few fields were combined into one property eg. `offsetX` and `offsetY` into `Vector2` `offset`. Except those few changes
+**YES**, practically every field was renamed to be in PascalCase, and few fields were combined into one property eg. `offsetX` and `offsetY` into `Vector2` `offset`. Except those few changes, API didn't change much as of now.
 
 ## License
 TiledCSPlus is [licensed under MIT license](LICENSE). TiledCS, the original project, was created by [Ruben Labruyere](https://github.com/TheBoneJarmer), and it was [licensed under MIT license](LICENSE_orig).
