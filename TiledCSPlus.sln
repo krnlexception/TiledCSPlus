@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TiledCSPlus", "TiledCSPlus\TiledCSPlus.csproj", "{6EEE0E9B-A474-4989-A3D8-9B588978ED40}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TiledCSPlus.Test", "TiledCSPlus.Test\TiledCSPlus.Test.csproj", "{57233593-B6DB-43D3-818D-80731BE8153D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6EEE0E9B-A474-4989-A3D8-9B588978ED40}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6EEE0E9B-A474-4989-A3D8-9B588978ED40}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6EEE0E9B-A474-4989-A3D8-9B588978ED40}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6EEE0E9B-A474-4989-A3D8-9B588978ED40}.Release|Any CPU.Build.0 = Release|Any CPU
+		{643C3D7F-A0E9-4E82-AAF3-A93BB229DA50}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{643C3D7F-A0E9-4E82-AAF3-A93BB229DA50}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{643C3D7F-A0E9-4E82-AAF3-A93BB229DA50}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{643C3D7F-A0E9-4E82-AAF3-A93BB229DA50}.Release|Any CPU.Build.0 = Release|Any CPU
+		{57233593-B6DB-43D3-818D-80731BE8153D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{57233593-B6DB-43D3-818D-80731BE8153D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{57233593-B6DB-43D3-818D-80731BE8153D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{57233593-B6DB-43D3-818D-80731BE8153D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

@@ -1,6 +1,6 @@
 using System;
 
-namespace TiledCS
+namespace TiledCSPlus
 {
     /// <summary>
     /// Represents an exception only thrown by TiledCS

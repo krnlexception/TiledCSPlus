@@ -1,5 +1,76 @@
-namespace TiledCS
+namespace TiledCSPlus
 {
+    /// <summary>
+    /// Represents a vector with 2 points
+    /// </summary>
+    public struct Vector2
+    {
+        /// <summary>
+        /// X parameter of the vector
+        /// </summary>
+        public float X { get; set; }
+
+        /// <summary>
+        /// Y parameter of the vector
+        /// </summary>
+        public float Y { get; set; }
+
+        public Vector2(float x = 0, float y = 0)
+        {
+            this.X = x;
+            this.Y = y;
+        }
+    }
+
+    /// <summary>
+    /// Represents a size
+    /// </summary>
+    public struct Size
+    {
+        public float Width { get; set; }
+        public float Height { get; set; }
+
+        public Size(float width = 0, float height = 0)
+        {
+            this.Width = width;
+            this.Height = height;
+        }
+    }
+
+    /// <summary>
+    /// Represents a color in RGBA format
+    /// </summary>
+    public class Color
+    {
+        /// <summary>
+        /// Red channel of the color
+        /// </summary>
+        public byte R { get; set; }
+
+        /// <summary>
+        /// Green channel of the color
+        /// </summary>
+        public byte G { get; set; }
+
+        /// <summary>
+        /// Blue channel of the color
+        /// </summary>
+        public byte B { get; set; }
+
+        /// <summary>
+        /// Alpha channel of the color
+        /// </summary>
+        public byte A { get; set; }
+
+        public Color(byte r, byte g, byte b, byte a = 255)
+        {
+            this.R = r;
+            this.G = g;
+            this.B = b;
+            this.A = a;
+        }
+    }
+
     /// <summary>
     /// Represents an element within the Tilesets array of a TiledMap object
     /// </summary>
@@ -8,12 +79,12 @@ namespace TiledCS
         /// <summary>
         /// The first gid defines which gid matches the tile with source vector 0,0. Is used to determine which tileset belongs to which gid
         /// </summary>
-        public int firstgid;
+        public int FirstGid { get; internal set; }
 
         /// <summary>
         /// The tsx file path as defined in the map file itself
         /// </summary>
-        public string source;
+        public string Source { get; internal set; }
     }
 
     /// <summary>
@@ -24,17 +95,17 @@ namespace TiledCS
         /// <summary>
         /// The property name or key in string format
         /// </summary>
-        public string name;
+        public string Name { get; internal set; }
 
         /// <summary>
         /// The property type as used in Tiled. Can be bool, number, string, ...
         /// </summary>
-        public TiledPropertyType type;
+        public TiledPropertyType Type { get; internal set; }
 
         /// <summary>
         /// The value in string format
         /// </summary>
-        public string value;
+        public string Value { get; internal set; }
     }
 
     /// <summary>
@@ -45,77 +116,62 @@ namespace TiledCS
         /// <summary>
         /// The layer id
         /// </summary>
-        public int id;
+        public int Id { get; internal set; }
 
         /// <summary>
         /// The layer name
         /// </summary>
-        public string name;
+        public string Name { get; internal set; }
 
         /// <summary>
-        /// Total horizontal tiles
+        /// Total horizontal and vertical tiles
         /// </summary>
-        public int width;
-
-        /// <summary>
-        /// Total vertical tiles
-        /// </summary>
-        public int height;
+        public Size Size { get; internal set; }
 
         /// <summary>
         /// The layer type.
         /// </summary>
-        public TiledLayerType type;
+        public TiledLayerType Type { get; internal set; }
 
         /// <summary>
-        /// The tint color set by the user in hex code
+        /// The tint color set by the user in Color class
         /// </summary>
-        public string tintcolor;
+        public Color TintColor { get; internal set; }
 
         /// <summary>
         /// Defines if the layer is visible in the editor
         /// </summary>
-        public bool visible;
+        public bool Visible { get; internal set; }
 
         /// <summary>
         /// Is true when the layer is locked
         /// </summary>
-        public bool locked;
+        public bool Locked { get; internal set; }
 
         /// <summary>
-        /// The horizontal offset
+        /// Layer offset
         /// </summary>
-        public float offsetX;
+        public Vector2 Offset { get; internal set; }
 
         /// <summary>
-        /// The vertical offset
+        /// Parallax position
         /// </summary>
-        public float offsetY;
-
-        /// <summary>
-        /// The parallax x position
-        /// </summary>
-        public float parallaxX;
-
-        /// <summary>
-        /// The parallax y position
-        /// </summary>
-        public float parallaxY;
+        public Vector2 Parrallax { get; internal set; }
 
         /// <summary>
         /// The layer opacity
         /// </summary>
-        public float opacity;
+        public float Opacity { get; internal set; }
 
         /// <summary>
         /// The layer class
         /// </summary>
-        public string @class;
+        public string Class { get; internal set; }
 
         /// <summary>
         /// An int array of gid numbers which define which tile is being used where. The length of the array equals the layer width * the layer height. Is null when the layer is not a tilelayer.
         /// </summary>
-        public int[] data;
+        public int[] Data { get; internal set; }
 
         /// <summary>
         /// A parallel array to data which stores the rotation flags of the tile.
@@ -124,27 +180,27 @@ namespace TiledCS
         /// bit 1 is (anti) diagonal flip.
         /// Is null when the layer is not a tilelayer.
         /// </summary>
-        public byte[] dataRotationFlags;
+        public byte[] DataRotationFlags { get; internal set; }
 
         /// <summary>
         /// The list of objects in case of an objectgroup layer. Is null when the layer has no objects.
         /// </summary>
-        public TiledObject[] objects;
+        public TiledObject[] Objects { get; internal set; }
 
         /// <summary>
         /// The layer properties if set
         /// </summary>
-        public TiledProperty[] properties;
+        public TiledProperty[] Properties { get; internal set; }
 
         /// <summary>
         /// The image the layer represents when the layer is an image layer
         /// </summary>
-        public TiledImage image;
+        public TiledImage Image { get; internal set; }
 
         /// <summary>
         /// The chunks of data when the map is infinite
         /// </summary>
-        public TiledChunk[] chunks;
+        public TiledChunk[] Chunks { get; internal set; }
     }
 
     /// <summary>
@@ -155,52 +211,42 @@ namespace TiledCS
         /// <summary>
         /// The object id
         /// </summary>
-        public int id;
+        public int Id { get; internal set; }
 
         /// <summary>
         /// The object's name
         /// </summary>
-        public string name;
+        public string Name { get; internal set; }
 
         /// <summary>
         /// The object type if defined. Null if none was set.
         /// </summary>
-        public string type;
+        public string Type { get; internal set; }
 
         /// <summary>
         /// The object's class
         /// </summary>
-        public string @class;
+        public string Class { get; internal set; }
 
         /// <summary>
-        /// The object's x position in pixels
+        /// Object's position in pixels
         /// </summary>
-        public float x;
-
-        /// <summary>
-        /// The object's y position in pixels
-        /// </summary>
-        public float y;
+        public Vector2 Position { get; internal set; }
 
         /// <summary>
         /// The object's rotation
         /// </summary>
-        public float rotation;
+        public float Rotation { get; internal set; }
 
         /// <summary>
-        /// The object's width in pixels
+        /// Object's size in pixels
         /// </summary>
-        public float width;
-
-        /// <summary>
-        /// The object's height in pixels
-        /// </summary>
-        public float height;
+        public Size Size { get; internal set; }
 
         /// <summary>
         /// The tileset gid when the object is linked to a tile
         /// </summary>
-        public int gid;
+        public int Gid { get; internal set; }
         
         /// <summary>
         /// A byte which stores the rotation flags of the tile linked to the object's gid.
@@ -209,27 +255,27 @@ namespace TiledCS
         /// bit 1 is (anti) diagonal flip.
         /// Is null when the layer is not a tilelayer.
         /// </summary>
-        public byte dataRotationFlag;
+        public byte DataRotationFlag { get; internal set; }
 
         /// <summary>
         /// An array of properties. Is null if none were defined.
         /// </summary>
-        public TiledProperty[] properties;
+        public TiledProperty[] Properties { get; internal set; }
 
         /// <summary>
         /// If an object was set to a polygon shape, this property will be set and can be used to access the polygon's data
         /// </summary>
-        public TiledPolygon polygon;
+        public TiledPolygon Polygon { get; internal set; }
 
         /// <summary>
         /// If an object was set to a point shape, this property will be set
         /// </summary>
-        public TiledPoint point;
+        public TiledPoint Point { get; internal set; }
 
         /// <summary>
         /// If an object was set to an ellipse shape, this property will be set
         /// </summary>
-        public TiledEllipse ellipse;
+        public TiledEllipse Ellipse { get; internal set; }
     }
 
     /// <summary>
@@ -238,9 +284,9 @@ namespace TiledCS
     public class TiledPolygon
     {
         /// <summary>
-        /// The array of vertices where each two elements represent an x and y position. Like 'x,y,x,y,x,y,x,y'.
+        /// The array of vertices represented in Vector2 format.
         /// </summary>
-        public float[] points;
+        public Vector2[] Points { get; internal set; }
     }
 
     /// <summary>
@@ -266,43 +312,43 @@ namespace TiledCS
         /// <summary>
         /// The tile id
         /// </summary>
-        public int id;
+        public int Id { get; internal set; }
 
         /// <summary>
         /// The custom tile type, set by the user
         /// </summary>
-        public string type;
+        public string Type { get; internal set; }
 
         /// <summary>
         /// The custom tile class, set by the user
         /// </summary>
-        public string @class;
+        public string Class { get; internal set; }
 
         /// <summary>
         /// The terrain definitions as int array. These are indices indicating what part of a terrain and which terrain this tile represents.
         /// </summary>
         /// <remarks>In the map file empty space is used to indicate null or no value. However, since it is an int array I needed something so I decided to replace empty values with -1.</remarks>
-        public int[] terrain;
+        public int[] Terrain { get; internal set; }
 
         /// <summary>
         /// An array of properties. Is null if none were defined.
         /// </summary>
-        public TiledProperty[] properties;
+        public TiledProperty[] Properties { get; internal set; }
 
         /// <summary>
         /// An array of tile animations. Is null if none were defined. 
         /// </summary>
-        public TiledTileAnimation[] animation;
+        public TiledTileAnimation[] Animations { get; internal set; }
 
         /// <summary>
         /// An array of tile objects created using the tile collision editor
         /// </summary>
-        public TiledObject[] objects;
+        public TiledObject[] Objects { get; internal set; }
 
         /// <summary>
         /// The individual tile image
         /// </summary>
-        public TiledImage image;
+        public TiledImage Image { get; internal set; }
     }
 
     /// <summary>
@@ -311,19 +357,14 @@ namespace TiledCS
     public class TiledImage
     {
         /// <summary>
-        /// The image width
+        /// The image size
         /// </summary>
-        public int width;
-
-        /// <summary>
-        /// The image height
-        /// </summary>
-        public int height;
+        public Size Size { get; internal set; }
 
         /// <summary>
         /// The image source path
         /// </summary>
-        public string source;
+        public string Source { get; internal set; }
     }
 
     /// <summary>
@@ -334,12 +375,12 @@ namespace TiledCS
         /// <summary>
         /// The tile id within a tileset
         /// </summary>
-        public int tileid;
+        public int TileId { get; internal set; }
 
         /// <summary>
         /// The duration in miliseconds
         /// </summary>
-        public int duration;
+        public int Duration { get; internal set; }
     }
 
     /// <summary>
@@ -348,24 +389,14 @@ namespace TiledCS
     public class TiledSourceRect
     {
         /// <summary>
-        /// The x position in pixels from the tile location in the source image
+        /// Size of rectangle
         /// </summary>
-        public int x;
+        public Size Size { get; internal set; }
 
         /// <summary>
-        /// The y position in pixels from the tile location in the source image
+        /// Position of rectangle
         /// </summary>
-        public int y;
-
-        /// <summary>
-        /// The width in pixels from the tile in the source image
-        /// </summary>
-        public int width;
-
-        /// <summary>
-        /// The height in pixels from the tile in the source image
-        /// </summary>
-        public int height;
+        public Vector2 Position { get; internal set; }
     }
 
     /// <summary>
@@ -376,42 +407,42 @@ namespace TiledCS
         /// <summary>
         /// The group's id
         /// </summary>
-        public int id;
+        public int Id { get; internal set; }
 
         /// <summary>
         /// The group's name
         /// </summary>
-        public string name;
+        public string Name { get; internal set; }
 
         /// <summary>
         /// The group's visibility
         /// </summary>
-        public bool visible;
+        public bool Visible { get; internal set; }
 
         /// <summary>
         /// The group's locked state
         /// </summary>
-        public bool locked;
+        public bool Locked { get; internal set; }
 
         /// <summary>
         /// The group's user properties
         /// </summary>
-        public TiledProperty[] properties;
+        public TiledProperty[] Properties { get; internal set; }
 
         /// <summary>
         /// The group's layers
         /// </summary>
-        public TiledLayer[] layers;
+        public TiledLayer[] Layers { get; internal set; }
 
         /// <summary>
         /// The group's objects
         /// </summary>
-        public TiledObject[] objects;
+        public TiledObject[] Objects { get; internal set; }
 
         /// <summary>
         /// The group's subgroups
         /// </summary>
-        public TiledGroup[] groups;
+        public TiledGroup[] Groups { get; internal set; }
     }
 
     /// <summary>
@@ -420,49 +451,23 @@ namespace TiledCS
     public class TiledChunk
     {
         /// <summary>
-        /// The chunk's x position
+        /// The chunk's position
         /// </summary>
-        public int x;
-        
+        public Vector2 Position { get; internal set; }
+
         /// <summary>
-        /// The chunk's y position
+        /// The chunk's position
         /// </summary>
-        public int y;
-        
-        /// <summary>
-        /// The chunk's width
-        /// </summary>
-        public int width;
-        
-        /// <summary>
-        /// The chunk's height
-        /// </summary>
-        public int height;
+        public Size Size { get; internal set; }
         
         /// <summary>
         /// The chunk's data is similar to the data array in the TiledLayer class
         /// </summary>
-        public int[] data;
+        public int[] Data { get; internal set; }
         
         /// <summary>
         /// The chunk's data rotation flags are similar to the data rotation flags array in the TiledLayer class
         /// </summary>
-        public byte[] dataRotationFlags;
-    }
-
-    /// <summary>
-    /// Represents a tile offset data object
-    /// </summary>
-    public class TiledOffset
-    {
-        /// <summary>
-        /// The x offset in pixels
-        /// </summary>
-        public int x;
-        
-        /// <summary>
-        /// The y offset in pixels
-        /// </summary>
-        public int y;
+        public byte[] DataRotationFlags { get; internal set; }
     }
 }

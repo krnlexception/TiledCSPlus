@@ -1,6 +1,6 @@
 using System.Linq;
 
-namespace TiledCS
+namespace TiledCSPlus
 {
     /// <summary>
     /// Defines all extension methods used within TiledCS

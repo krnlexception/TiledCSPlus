@@ -1,4 +1,4 @@
-namespace TiledCS
+namespace TiledCSPlus
 {
     /// <summary>
     /// Represents the layer type
