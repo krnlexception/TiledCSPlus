@@ -3,7 +3,7 @@ namespace TiledCSPlus
     /// <summary>
     /// Represents a vector with 2 points
     /// </summary>
-    public struct Vector2
+    public class Vector2 : IEquatable<Vector2>
     {
         /// <summary>
         /// X parameter of the vector
@@ -20,12 +20,40 @@ namespace TiledCSPlus
             this.X = x;
             this.Y = y;
         }
+
+        public static bool operator ==(Vector2 c1, Vector2 c2)
+        {
+            return c1.X == c2.X && c1.Y == c2.Y;
+        }
+
+        public static bool operator !=(Vector2 c1, Vector2 c2)
+        {
+            return c1.X != c2.X || c1.Y != c2.Y;
+        }
+
+        public bool Equals(Vector2 other)
+        {
+            return X.Equals(other.X) && Y.Equals(other.Y);
+        }
+
+        public override bool Equals(object? obj)
+        {
+            if (ReferenceEquals(null, obj)) return false;
+            if (ReferenceEquals(this, obj)) return true;
+            if (obj.GetType() != this.GetType()) return false;
+            return Equals((Vector2)obj);
+        }
+
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(X, Y);
+        }
     }
 
     /// <summary>
     /// Represents a size
     /// </summary>
-    public struct Size
+    public class Size : IEquatable<Size>
     {
         public float Width { get; set; }
         public float Height { get; set; }
@@ -35,12 +63,26 @@ namespace TiledCSPlus
             this.Width = width;
             this.Height = height;
         }
+        public static bool operator ==(Size c1, Size c2)
+        {
+            return c1.Width == c2.Width && c1.Height == c2.Height;
+        }
+
+        public static bool operator !=(Size c1, Size c2)
+        {
+            return c1.Width != c2.Width || c1.Height != c2.Height;
+        }
+
+        public bool Equals(Size? other)
+        {
+            return Width.Equals(other.Width) && Height.Equals(other.Height);
+        }
     }
 
     /// <summary>
     /// Represents a color in RGBA format
     /// </summary>
-    public class Color
+    public class Color : IEquatable<Color>
     {
         /// <summary>
         /// Red channel of the color
@@ -68,6 +110,23 @@ namespace TiledCSPlus
             this.G = g;
             this.B = b;
             this.A = a;
+        }
+
+
+
+        public static bool operator ==(Color c1, Color c2)
+        {
+            return c1.R == c2.R && c1.G == c2.G && c1.B == c2.B && c1.A == c2.A;
+        }
+
+        public static bool operator !=(Color c1, Color c2)
+        {
+            return c1.R != c2.R || c1.G != c2.G || c1.B != c2.B || c1.A != c2.A;
+        }
+
+        public bool Equals(Color? other)
+        {
+            return R.Equals(other.R) && G.Equals(other.G) && B.Equals(other.B) && A.Equals(other.A);
         }
     }
 

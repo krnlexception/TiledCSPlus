@@ -20,7 +20,7 @@ public class TiledMapTest
         TiledMap.TileHeight.ShouldBe(16);
         TiledMap.TileWidth.ShouldBe(16);
         TiledMap.Orientation.ShouldBe("orthogonal");
-        TiledMap.BackgroundColor.ShouldBe(new Color(0, 195, 195,239));
+        TiledMap.BackgroundColor.ShouldBe(new Color(1, 2, 3, 4));
     }
 
     [Test]
@@ -33,6 +33,6 @@ public class TiledMapTest
     [Test]
     public void Layers()
     {
-        TiledMap.Layers[0].TintColor.ShouldBe(new Color(170, 0, 1));
+        TiledMap.Layers[0].TintColor.ShouldBe(new Color(255, 254, 253, 252));
     }
 }
