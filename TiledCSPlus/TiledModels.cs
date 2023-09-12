@@ -144,9 +144,14 @@ namespace TiledCSPlus
         public string Name { get; internal set; }
 
         /// <summary>
-        /// Total horizontal and vertical tiles
+        /// Total horizontal tiles
         /// </summary>
-        public Size Size { get; internal set; }
+        public int Width { get; internal set; }
+
+        /// <summary>
+        /// Total vertical tiles
+        /// </summary>
+        public int Height { get; internal set; }
 
         /// <summary>
         /// The layer type.
@@ -377,14 +382,19 @@ namespace TiledCSPlus
     public class TiledImage
     {
         /// <summary>
-        /// The image size
+        /// The image width
         /// </summary>
-        public Size Size { get; internal set; }
+        public int Width { get; internal set; }
+
+        /// <summary>
+        /// The image height
+        /// </summary>
+        public int Height { get; internal set; }
 
         /// <summary>
         /// The image source path
         /// </summary>
-        public string Source { get; internal set; }
+        public string Source;
     }
 
     /// <summary>
@@ -409,14 +419,24 @@ namespace TiledCSPlus
     public class TiledSourceRect
     {
         /// <summary>
-        /// Size of rectangle
+        /// The x position in pixels from the tile location in the source image
         /// </summary>
-        public Size Size { get; internal set; }
+        public int X { get; internal set; }
 
         /// <summary>
-        /// Position of rectangle
+        /// The y position in pixels from the tile location in the source image
         /// </summary>
-        public Vector2 Position { get; internal set; }
+        public int Y { get; internal set; }
+
+        /// <summary>
+        /// The width in pixels from the tile in the source image
+        /// </summary>
+        public int Width { get; internal set; }
+
+        /// <summary>
+        /// The height in pixels from the tile in the source image
+        /// </summary>
+        public int Height { get; internal set; }
     }
 
     /// <summary>
@@ -471,14 +491,24 @@ namespace TiledCSPlus
     public class TiledChunk
     {
         /// <summary>
-        /// The chunk's position
+        /// The chunk's x position
         /// </summary>
-        public Vector2 Position { get; internal set; }
+        public int X { get; internal set; }
 
         /// <summary>
-        /// The chunk's position
+        /// The chunk's y position
         /// </summary>
-        public Size Size { get; internal set; }
+        public int Y { get; internal set; }
+
+        /// <summary>
+        /// The chunk's width
+        /// </summary>
+        public int Width { get; internal set; }
+
+        /// <summary>
+        /// The chunk's height
+        /// </summary>
+        public int Height { get; internal set; }
         
         /// <summary>
         /// The chunk's data is similar to the data array in the TiledLayer class

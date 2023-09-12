@@ -336,9 +336,8 @@ namespace TiledCSPlus
             tiledLayer.Opacity = 1.0f;
             tiledLayer.Parrallax = new Vector2(1.0f, 1.0f);
 
-            if (attrWidth != null || attrWidth != null) tiledLayer.Size = new Size(0, 0);
-            if (attrWidth != null) tiledLayer.Size.Width = int.Parse(attrWidth.Value);
-            if (attrHeight != null) tiledLayer.Size.Height = int.Parse(attrHeight.Value);
+            if (attrWidth != null) tiledLayer.Width = int.Parse(attrWidth.Value);
+            if (attrHeight != null) tiledLayer.Height = int.Parse(attrHeight.Value);
             if (attrVisible != null) tiledLayer.Visible = attrVisible.Value == "1";
             if (attrLocked != null) tiledLayer.Locked = attrLocked.Value == "1";
             if (attrTint != null) tiledLayer.TintColor = ParseColor(attrTint.Value);
@@ -393,9 +392,10 @@ namespace TiledCSPlus
                 foreach (XmlNode nodeChunk in nodesChunk)
                 {
                     var chunk = new TiledChunk();
-                    chunk.Position = new Vector2(int.Parse(nodeChunk.Attributes["x"].Value),
-                        int.Parse(nodeChunk.Attributes["y"].Value));
-                    chunk.Size = new Size(int.Parse(nodeChunk.Attributes["width"].Value), int.Parse(nodeChunk.Attributes["height"].Value));
+                    chunk.X = int.Parse(nodeChunk.Attributes["x"].Value);
+                    chunk.Y = int.Parse(nodeChunk.Attributes["y"].Value);
+                    chunk.Width = int.Parse(nodeChunk.Attributes["width"].Value);
+                    chunk.Height = int.Parse(nodeChunk.Attributes["height"].Value);
 
                     int[] chunkData = new int[]{};
                     byte[] chunkDataRotationFlags = new byte[] { };
@@ -533,8 +533,8 @@ namespace TiledCSPlus
         {
             var tiledImage = new TiledImage();
             tiledImage.Source = node.Attributes["source"].Value;
-            tiledImage.Size = new Size(int.Parse(node.Attributes["width"].Value),
-                int.Parse(node.Attributes["height"].Value));
+            tiledImage.Width = int.Parse(node.Attributes["width"].Value);
+            tiledImage.Height = int.Parse(node.Attributes["height"].Value);
 
             return tiledImage;
         }
@@ -752,8 +752,10 @@ namespace TiledCSPlus
                 if (i == gid - mapTileset.FirstGid)
                 {
                     var result = new TiledSourceRect();
-                    result.Position = new Vector2(tileHor * tileset.TileWidth, tileVert * tileset.TileHeight);
-                    result.Size = new Size(tileset.TileWidth, tileset.TileHeight);
+                    result.X = tileHor * tileset.TileWidth;
+                    result.Y = tileVert * tileset.TileHeight;
+                    result.Width = tileset.TileWidth;
+                    result.Height = tileset.TileHeight;
 
                     return result;
                 }
@@ -761,7 +763,7 @@ namespace TiledCSPlus
                 // Update x and y position
                 tileHor++;
 
-                if (tileHor == tileset.Image.Size.Width / tileset.TileWidth)
+                if (tileHor == tileset.Image.Width / tileset.TileWidth)
                 {
                     tileHor = 0;
                     tileVert++;
@@ -785,7 +787,7 @@ namespace TiledCSPlus
                 throw new TiledException("Retrieving tile flipped state for a tile does not work for non-tile layers");
             }
             
-            return IsTileFlippedHorizontal(layer, tileHor + (tileVert * (int)layer.Size.Width));
+            return IsTileFlippedHorizontal(layer, tileHor + (tileVert * (int)layer.Width));
         }
 
         /// <summary>
@@ -828,7 +830,7 @@ namespace TiledCSPlus
                 throw new TiledException("Retrieving tile flipped state for a tile does not work for non-tile layers");
             }
             
-            return IsTileFlippedVertical(layer, tileHor + (tileVert * (int)layer.Size.Width));
+            return IsTileFlippedVertical(layer, tileHor + (tileVert * (int)layer.Width));
         }
 
         /// <summary>
@@ -872,7 +874,7 @@ namespace TiledCSPlus
                 throw new TiledException("Retrieving tile flipped state for a tile does not work for non-tile layers");
             }
             
-            return IsTileFlippedDiagonal(layer, tileHor + (tileVert * (int)layer.Size.Width));
+            return IsTileFlippedDiagonal(layer, tileHor + (tileVert * (int)layer.Width));
         }
 
         /// <summary>

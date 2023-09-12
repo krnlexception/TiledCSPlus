@@ -172,8 +172,8 @@ namespace TiledCSPlus
         {
             var tiledImage = new TiledImage();
             tiledImage.Source = node.Attributes["source"].Value;
-            tiledImage.Size = new Size(int.Parse(node.Attributes["width"].Value),
-                int.Parse(node.Attributes["height"].Value));
+            tiledImage.Width = int.Parse(node.Attributes["width"].Value);
+            tiledImage.Height = int.Parse(node.Attributes["height"].Value);
 
             return tiledImage;
         }
@@ -251,8 +251,8 @@ namespace TiledCSPlus
                 if (nodeImage != null)
                 {
                     var tileImage = new TiledImage();
-                    tileImage.Size = new Size(int.Parse(nodeImage.Attributes["width"].Value),
-                        int.Parse(nodeImage.Attributes["height"].Value));
+                    tileImage.Width = int.Parse(nodeImage.Attributes["width"].Value);
+                    tileImage.Height = int.Parse(nodeImage.Attributes["height"].Value);
                     tileImage.Source = nodeImage.Attributes["source"].Value;
 
                     tile.Image = tileImage;
