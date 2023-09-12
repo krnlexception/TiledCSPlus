@@ -100,6 +100,11 @@ namespace TiledCSPlus
         public Color BackgroundColor { get; internal set; }
 
         /// <summary>
+        /// Returns tilesets embedded in the map
+        /// </summary>
+        public Dictionary<int, TiledTileset> EmbeddedTilesets { get; internal set; }
+
+        /// <summary>
         /// Returns an empty instance of TiledMap
         /// </summary>
         public TiledMap()
@@ -158,31 +163,32 @@ namespace TiledCSPlus
 
                 var nodeMap = document.SelectSingleNode("map");
                 var nodesProperty = nodeMap.SelectNodes("properties/property");
-                var nodesLayer = nodeMap.SelectNodes("layer");
-                var nodesImageLayer = nodeMap.SelectNodes("imagelayer");
-                var nodesObjectGroup = nodeMap.SelectNodes("objectgroup");
+                var nodesLayer = nodeMap.SelectNodes("layer | objectgroup | imagelayer");
                 var nodesTileset = nodeMap.SelectNodes("tileset");
                 var nodesGroup = nodeMap.SelectNodes("group");
                 var attrParallaxOriginX = nodeMap.Attributes["parallaxoriginx"];
                 var attrParallaxOriginY = nodeMap.Attributes["parallaxoriginy"];
+                var attrBackgroundColor = nodeMap.Attributes["backgroundcolor"];
 
                 TiledVersion = nodeMap.Attributes["tiledversion"].Value;
                 Orientation = nodeMap.Attributes["orientation"].Value;
                 RenderOrder = nodeMap.Attributes["renderorder"].Value;
-                BackgroundColor = ParseColor(nodeMap.Attributes["backgroundcolor"]?.Value);
                 Infinite = nodeMap.Attributes["infinite"].Value == "1";
+                EmbeddedTilesets = new Dictionary<int, TiledTileset>();
 
                 Width = int.Parse(nodeMap.Attributes["width"].Value);
                 Height = int.Parse(nodeMap.Attributes["height"].Value);
                 TileWidth = int.Parse(nodeMap.Attributes["tilewidth"].Value);
                 TileHeight = int.Parse(nodeMap.Attributes["tileheight"].Value);
 
+
                 if (nodesProperty != null) Properties = ParseProperties(nodesProperty);
                 if (nodesTileset != null) Tilesets = ParseTilesets(nodesTileset);
-                if (nodesLayer != null) Layers = ParseLayers(nodesLayer, nodesObjectGroup, nodesImageLayer);
+                if (nodesLayer != null) Layers = ParseLayers(nodesLayer);
                 if (nodesGroup != null) Groups = ParseGroups(nodesGroup);
                 if (attrParallaxOriginX != null) ParallaxOriginX = float.Parse(attrParallaxOriginX.Value, CultureInfo.InvariantCulture);
                 if (attrParallaxOriginY != null) ParallaxOriginY = float.Parse(attrParallaxOriginY.Value, CultureInfo.InvariantCulture);
+                if (attrBackgroundColor != null) BackgroundColor = ParseColor(attrBackgroundColor.Value);
             }
             catch (Exception ex)
             {
@@ -230,11 +236,26 @@ namespace TiledCSPlus
 
             foreach (XmlNode node in nodeList)
             {
-                var tileset = new TiledMapTileset();
-                tileset.FirstGid = int.Parse(node.Attributes["firstgid"].Value);
-                tileset.Source = node.Attributes["source"]?.Value;
-
-                result.Add(tileset);
+                if (node.Attributes["source"] == null)
+                {
+                    //tilemap is an embedded tilemap
+                    TiledTileset tileset = new TiledTileset();
+                    tileset.ParseXml(node.OuterXml);
+                    int firstgid = int.Parse(node.Attributes["firstgid"].Value);
+                    EmbeddedTilesets.Add(firstgid, tileset);
+                    var maptileset = new TiledMapTileset();
+                    maptileset.FirstGid = int.Parse(node.Attributes["firstgid"].Value);
+                    maptileset.IsTilesetEmbedded = true;
+                    result.Add(maptileset);
+                }
+                else
+                {
+                    var tileset = new TiledMapTileset();
+                    tileset.FirstGid = int.Parse(node.Attributes["firstgid"].Value);
+                    tileset.Source = node.Attributes["source"]?.Value;
+                    tileset.IsTilesetEmbedded = false;
+                    result.Add(tileset);
+                }
             }
 
             return result.ToArray();
@@ -248,9 +269,7 @@ namespace TiledCSPlus
             {
                 var nodesProperty = node.SelectNodes("properties/property");
                 var nodesGroup = node.SelectNodes("group");
-                var nodesLayer = node.SelectNodes("layer");
-                var nodesObjectGroup = node.SelectNodes("objectgroup");
-                var nodesImageLayer = node.SelectNodes("imagelayer");
+                var nodesLayer = node.SelectNodes("layer | objectgroup | imagelayer");
                 var attrVisible = node.Attributes["visible"];
                 var attrLocked = node.Attributes["locked"];
 
@@ -262,7 +281,7 @@ namespace TiledCSPlus
                 if (attrLocked != null) tiledGroup.Locked = attrLocked.Value == "1";
                 if (nodesProperty != null) tiledGroup.Properties = ParseProperties(nodesProperty);
                 if (nodesGroup != null) tiledGroup.Groups = ParseGroups(nodesGroup);
-                if (nodesLayer != null) tiledGroup.Layers = ParseLayers(nodesLayer, nodesObjectGroup, nodesImageLayer);
+                if (nodesLayer != null) tiledGroup.Layers = ParseLayers(nodesLayer);
 
                 result.Add(tiledGroup);
             }
@@ -270,23 +289,25 @@ namespace TiledCSPlus
             return result.ToArray();
         }
 
-        private TiledLayer[] ParseLayers(XmlNodeList nodesLayer, XmlNodeList nodesObjectGroup, XmlNodeList nodesImageLayer)
+        private TiledLayer[] ParseLayers(XmlNodeList nodesLayer)
         {
             var result = new List<TiledLayer>();
-
             foreach (XmlNode node in nodesLayer)
             {
-                result.Add(ParseLayer(node, TiledLayerType.TileLayer));
-            }
-
-            foreach (XmlNode node in nodesObjectGroup)
-            {
-                result.Add(ParseLayer(node, TiledLayerType.ObjectLayer));
-            }
-
-            foreach (XmlNode node in nodesImageLayer)
-            {
-                result.Add(ParseLayer(node, TiledLayerType.ImageLayer));
+                switch (node.Name)
+                {
+                    case "layer":
+                        result.Add(ParseLayer(node, TiledLayerType.TileLayer));
+                        break;
+                    case "objectgroup":
+                        result.Add(ParseLayer(node, TiledLayerType.ObjectLayer));
+                        break;
+                    case "imagelayer":
+                        result.Add(ParseLayer(node, TiledLayerType.ImageLayer));
+                        break;
+                    default:
+                        throw new TiledException($"Unknown layer type: {node.Name}");
+                }
             }
 
             return result.ToArray();

@@ -4,8 +4,8 @@ TiledCSPlus is an extended, and up to date fork of [TiledCS](https://github.com/
 
 ## Planned features
 * Support for Tiled 1.9 and 1.10 features.
-* Embedded tilesets
-* Better layer arrangement (layers will be arranged in order from top to bottom, instead of current tile layers, then object layers, and image layers at the end)
+* ~~Embedded tilesets~~ Done!
+* ~~Better layer arrangement (layers will be arranged in order from top to bottom, instead of current tile layers, then object layers, and image layers at the end)~~ Also done!
 
 ## Does it break compability?
 **YES**, practically every field was renamed to be in PascalCase, and few fields were combined into one property eg. `offsetX` and `offsetY` into `Vector2` `offset`. Except those few changes, API didn't change much as of now.

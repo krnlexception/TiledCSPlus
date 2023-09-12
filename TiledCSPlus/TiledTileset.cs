@@ -1,7 +1,9 @@
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Globalization;
 using System.IO;
+using System.Numerics;
 using System.Xml;
 
 namespace TiledCSPlus
@@ -133,7 +135,9 @@ namespace TiledCSPlus
                 var attrSpacing = nodeTileset.Attributes["spacing"];
                 var attrClass = nodeTileset.Attributes["class"];
 
-                TiledVersion = nodeTileset.Attributes["tiledversion"].Value;
+                TiledVersion = nodeTileset.Attributes["tiledversion"] != null
+                    ? nodeTileset.Attributes["tiledversion"].Value
+                    : "";
                 Name = nodeTileset.Attributes["name"]?.Value;
                 TileWidth = int.Parse(nodeTileset.Attributes["tilewidth"].Value);
                 TileHeight = int.Parse(nodeTileset.Attributes["tileheight"].Value);

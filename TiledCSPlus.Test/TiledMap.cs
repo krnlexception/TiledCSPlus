@@ -26,13 +26,22 @@ public class TiledMapTest
     [Test]
     public void Tileset()
     {
-        Tilesets[1].Name.ShouldBe("tileset");
+        TiledMap.Tilesets[0].FirstGid.ShouldBe(1);
+        TiledMap.Tilesets[0].Source.ShouldBe("tileset.tsx");
+        TiledMap.Tilesets[0].IsTilesetEmbedded.ShouldBe(false);
+        TiledMap.Tilesets[1].FirstGid.ShouldBe(2);
+        TiledMap.Tilesets[1].Source.ShouldBe(null);
+        TiledMap.Tilesets[1].IsTilesetEmbedded.ShouldBe(true);
+
         Tilesets[1].Image.Source.ShouldBe("tileset.png");
+        TiledMap.EmbeddedTilesets[2].Name.ShouldBe("tileset-embedded");
+
     }
 
     [Test]
     public void Layers()
     {
         TiledMap.Layers[0].TintColor.ShouldBe(new Color(255, 254, 253, 252));
+        TiledMap.Layers[2].Name.ShouldBe("Image Layer 1");
     }
 }

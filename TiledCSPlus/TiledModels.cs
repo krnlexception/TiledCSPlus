@@ -21,32 +21,9 @@ namespace TiledCSPlus
             this.Y = y;
         }
 
-        public static bool operator ==(Vector2 c1, Vector2 c2)
-        {
-            return c1.X == c2.X && c1.Y == c2.Y;
-        }
-
-        public static bool operator !=(Vector2 c1, Vector2 c2)
-        {
-            return c1.X != c2.X || c1.Y != c2.Y;
-        }
-
         public bool Equals(Vector2 other)
         {
             return X.Equals(other.X) && Y.Equals(other.Y);
-        }
-
-        public override bool Equals(object? obj)
-        {
-            if (ReferenceEquals(null, obj)) return false;
-            if (ReferenceEquals(this, obj)) return true;
-            if (obj.GetType() != this.GetType()) return false;
-            return Equals((Vector2)obj);
-        }
-
-        public override int GetHashCode()
-        {
-            return HashCode.Combine(X, Y);
         }
     }
 
@@ -62,15 +39,6 @@ namespace TiledCSPlus
         {
             this.Width = width;
             this.Height = height;
-        }
-        public static bool operator ==(Size c1, Size c2)
-        {
-            return c1.Width == c2.Width && c1.Height == c2.Height;
-        }
-
-        public static bool operator !=(Size c1, Size c2)
-        {
-            return c1.Width != c2.Width || c1.Height != c2.Height;
         }
 
         public bool Equals(Size? other)
@@ -112,18 +80,6 @@ namespace TiledCSPlus
             this.A = a;
         }
 
-
-
-        public static bool operator ==(Color c1, Color c2)
-        {
-            return c1.R == c2.R && c1.G == c2.G && c1.B == c2.B && c1.A == c2.A;
-        }
-
-        public static bool operator !=(Color c1, Color c2)
-        {
-            return c1.R != c2.R || c1.G != c2.G || c1.B != c2.B || c1.A != c2.A;
-        }
-
         public bool Equals(Color? other)
         {
             return R.Equals(other.R) && G.Equals(other.G) && B.Equals(other.B) && A.Equals(other.A);
@@ -139,6 +95,11 @@ namespace TiledCSPlus
         /// The first gid defines which gid matches the tile with source vector 0,0. Is used to determine which tileset belongs to which gid
         /// </summary>
         public int FirstGid { get; internal set; }
+
+        /// <summary>
+        /// Returns true if tileset is embedded in map
+        /// </summary>
+        public bool IsTilesetEmbedded { get; internal set; }
 
         /// <summary>
         /// The tsx file path as defined in the map file itself
