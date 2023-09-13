@@ -2,8 +2,7 @@
 
     <PropertyGroup>
         <TargetFramework>netstandard2.1</TargetFramework>
-        <ImplicitUsings>enable</ImplicitUsings>
-        <Nullable>enable</Nullable>
+        <LangVersion>10.0</LangVersion>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
         <Version>3.4.0</Version>
         <Authors>nolemretaW, TheBoneJarmer</Authors>
