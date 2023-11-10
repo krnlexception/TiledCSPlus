@@ -3,7 +3,7 @@
 TiledCSPlus is an extended, and up to date fork of [TiledCS](https://github.com/TheBoneJarmer/TiledCS), a .NET library for loading Tiled maps and tilesets. Currently supports only uncompressed Base64 encoded .TMX maps and .TSX tilesets.
 
 ## Planned features
-* Support for Tiled 1.9 and 1.10 features.
+* ~~Support for Tiled 1.9 and 1.10 features.~~ Fully supported!
 * ~~Embedded tilesets~~ Done!
 * ~~Better layer arrangement (layers will be arranged in order from top to bottom, instead of current tile layers, then object layers, and image layers at the end)~~ Also done!
 
