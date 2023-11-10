@@ -2,28 +2,28 @@ using System.Linq;
 
 namespace TiledCSPlus
 {
+  /// <summary>
+  /// Defines all extension methods used within TiledCS
+  /// </summary>
+  public static class Extensions
+  {
     /// <summary>
-    /// Defines all extension methods used within TiledCS
+    /// Converts a comma separated string to an int array
     /// </summary>
-    public static class Extensions
+    /// <param name="src">The comma separated string source</param>
+    /// <returns>The parsed int array</returns>
+    public static int[] AsIntArray(this string src)
     {
-        /// <summary>
-        /// Converts a comma separated string to an int array
-        /// </summary>
-        /// <param name="src">The comma separated string source</param>
-        /// <returns>The parsed int array</returns>
-        public static int[] AsIntArray(this string src)
-        {
-            return src.Select(x => int.Parse(x.ToString().Length == 0 ? "-1" : x.ToString())).ToArray();
-        }
-        /// <summary>
-        /// Converts a string array whose values are actually all numbers to an int array
-        /// </summary>
-        /// <param name="src">The string array</param>
-        /// <returns>The parsed int array</returns>
-        public static int[] AsIntArray(this string[] src)
-        {
-            return src.Select(x => int.Parse(x.Length == 0 ? "-1" : x)).ToArray();
-        }
+      return src.Select(x => int.Parse(x.ToString().Length == 0 ? "-1" : x.ToString())).ToArray();
     }
+    /// <summary>
+    /// Converts a string array whose values are actually all numbers to an int array
+    /// </summary>
+    /// <param name="src">The string array</param>
+    /// <returns>The parsed int array</returns>
+    public static int[] AsIntArray(this string[] src)
+    {
+      return src.Select(x => int.Parse(x.Length == 0 ? "-1" : x)).ToArray();
+    }
+  }
 }
