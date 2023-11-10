@@ -3,7 +3,7 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "D:/Projects/csharp/TiledCSPlus/TiledCSPlus.Example/assets/tilemap.tmx",
+    "activeFile": "tileset.tsx",
     "expandedProjectPaths": [
         "."
     ],
@@ -12,12 +12,23 @@
         "": {
             "scaleInDock": 1
         },
+        "D:/Projects/csharp/MelonEngine/MelonEngine.Common/data/levels/map01.tmx": {
+            "scale": 1,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 480,
+                "y": -0.5
+            }
+        },
+        "D:/Projects/csharp/MelonEngine/MelonEngine.Common/data/sprites/overworld.tsx": {
+            "scaleInDock": 1
+        },
         "D:/Projects/csharp/TiledCSPlus/TiledCSPlus.Example/assets/tilemap.tmx": {
             "scale": 7.43375,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 84.54683033462251,
-                "y": 79.50227005212713
+                "x": 79.90583487472676,
+                "y": 79.83857407096014
             }
         },
         "D:/Projects/csharp/TiledCSPlus/TiledCSPlus.Example/assets/tilemap.tmx#tileset-embedded": {
@@ -30,8 +41,8 @@
             "scale": 4,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 79.875,
-                "y": 80
+                "x": 225.375,
+                "y": 134
             }
         },
         "tilemap.tmx#tileset": {
@@ -39,6 +50,21 @@
         },
         "tilemap.tmx#tileset-embedded": {
             "scaleInDock": 1
+        },
+        "tilemap1.9.tmx": {
+            "scale": 3.645625,
+            "selectedLayer": 1,
+            "viewCenter": {
+                "x": 80.09600548602779,
+                "y": 80.23315618035316
+            }
+        },
+        "tilemap1.9.tmx#tileset-embedded": {
+            "scaleInDock": 1
+        },
+        "tilemap1.9.tmx#tileset-embedded19": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
         },
         "tileset.tsx": {
             "scaleInDock": 1,
@@ -53,15 +79,17 @@
     "map.tileWidth": 16,
     "map.width": 10,
     "openFiles": [
-        "tilemap.tmx",
-        "D:/Projects/csharp/TiledCSPlus/TiledCSPlus.Example/assets/tilemap.tmx",
+        "D:/Projects/csharp/MelonEngine/MelonEngine.Common/data/levels/map01.tmx",
+        "tilemap1.9.tmx",
         "tileset.tsx"
     ],
     "project": "TiledCSPlus_test.tiled-project",
     "recentFiles": [
-        "tilemap.tmx",
+        "D:/Projects/csharp/MelonEngine/MelonEngine.Common/data/levels/map01.tmx",
+        "tilemap1.9.tmx",
         "tileset.tsx",
-        "D:/Projects/csharp/TiledCSPlus/TiledCSPlus.Example/assets/tilemap.tmx"
+        "D:/Projects/csharp/TiledCSPlus/TiledCSPlus.Example/assets/tilemap.tmx",
+        "tilemap.tmx"
     ],
     "tileset.embedInMap": true,
     "tileset.lastUsedFilter": "Tiled tileset files (*.tsx *.xml)",
