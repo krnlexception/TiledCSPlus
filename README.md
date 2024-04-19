@@ -8,6 +8,12 @@ TiledCSPlus is an extended, and up to date fork of [TiledCS](https://github.com/
 * ~~Better layer arrangement (layers will be arranged in order from top to bottom, instead of current tile layers, then object layers, and image layers at the end)~~ Also done!
 * Support for more formats
 
+## Installation
+### NuGet
+You can download the package from NuGet here: https://www.nuget.org/packages/TiledCSPlus/
+### DLL library
+Add `TiledCSPlus.dll` as a dependency in your project.
+
 ## Does it break compability?
 **YES**, practically every field was renamed to be in PascalCase, and few fields were combined into one property eg. `offsetX` and `offsetY` into `Vector2` `offset`. Except those few changes, API didn't change much as of now.
 
