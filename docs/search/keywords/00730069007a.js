@@ -1,0 +1,1 @@
+﻿NDSearch.OnPrefixDataLoaded("siz",["Class","Property"],[["Size",,[["TiledCSPlus",,,,0,"File:TiledModels.cs:TiledCSPlus.Size","CSharpClass:TiledCSPlus.Size"],["TiledCSPlus.TiledObject",,,,1,"File:TiledModels.cs:TiledCSPlus.TiledObject.Size","CSharpClass:TiledCSPlus.TiledObject:Size"]]]]);

@@ -1,0 +1,1 @@
+﻿NDContentPage.OnToolTipsLoaded({202:"<div class=\"NDToolTip TEnumeration LCSharp\"><div id=\"NDPrototype202\" class=\"NDPrototype\"><div class=\"PSection PPlainSection\"><span class=\"SHKeyword\">public enum</span> TiledPropertyType</div></div><div class=\"TTSummary\">Represents property\'s value data type</div></div>"});

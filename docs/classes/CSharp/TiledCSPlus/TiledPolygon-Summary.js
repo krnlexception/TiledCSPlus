@@ -1,0 +1,1 @@
+﻿NDFramePage.OnPageTitleLoaded("CSharpClass:TiledCSPlus.TiledPolygon","TiledPolygon");NDSummary.OnSummaryLoaded("CSharpClass:TiledCSPlus.TiledPolygon",[["C#","CSharp"]],[["Classes","Class"],["Groups","Group"],["Properties","Property"]],[[125,0,0,"<span class=\"Qualifier\">TiledCSPlus.</span>&#8203;TiledPolygon"],[126,0,1,"Properties","Properties"],[127,0,2,"Points","Points"]]);

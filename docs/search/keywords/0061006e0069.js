@@ -1,0 +1,1 @@
+﻿NDSearch.OnPrefixDataLoaded("ani",["Property"],[["Animations",,[["TiledCSPlus.TiledTile",,,,0,"File:TiledModels.cs:TiledCSPlus.TiledTile.Animations","CSharpClass:TiledCSPlus.TiledTile:Animations"]]]]);

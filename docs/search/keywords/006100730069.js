@@ -1,0 +1,1 @@
+﻿NDSearch.OnPrefixDataLoaded("asi",["Function"],[["AsIntArray",,[["TiledCSPlus.Extensions",,,,0,"File:Extensions.cs:TiledCSPlus.Extensions.AsIntArray","CSharpClass:TiledCSPlus.Extensions:AsIntArray"]]]]);

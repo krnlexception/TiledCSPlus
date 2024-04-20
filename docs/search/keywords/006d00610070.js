@@ -1,0 +1,1 @@
+﻿NDSearch.OnPrefixDataLoaded("map",["Property"],[["MapVersion",,[["TiledCSPlus.TiledMap",,,,0,"File:TiledMap.cs:TiledCSPlus.TiledMap.MapVersion","CSharpClass:TiledCSPlus.TiledMap:MapVersion"]]]]);

@@ -1,0 +1,1 @@
+﻿NDSearch.OnPrefixDataLoaded("ori",["Property"],[["Orientation",,[["TiledCSPlus.TiledMap",,,,0,"File:TiledMap.cs:TiledCSPlus.TiledMap.Orientation","CSharpClass:TiledCSPlus.TiledMap:Orientation"]]]]);

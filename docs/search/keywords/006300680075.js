@@ -1,0 +1,1 @@
+﻿NDSearch.OnPrefixDataLoaded("chu",["Property"],[["Chunks",,[["TiledCSPlus.TiledLayer",,,,0,"File:TiledModels.cs:TiledCSPlus.TiledLayer.Chunks","CSharpClass:TiledCSPlus.TiledLayer:Chunks"]]]]);

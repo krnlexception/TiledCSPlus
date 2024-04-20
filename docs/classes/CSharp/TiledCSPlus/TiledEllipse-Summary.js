@@ -1,0 +1,1 @@
+﻿NDFramePage.OnPageTitleLoaded("CSharpClass:TiledCSPlus.TiledEllipse","TiledEllipse");NDSummary.OnSummaryLoaded("CSharpClass:TiledCSPlus.TiledEllipse",[["C#","CSharp"]],[["Classes","Class"]],[[129,0,0,"<span class=\"Qualifier\">TiledCSPlus.</span>&#8203;TiledEllipse"]]);

@@ -1,0 +1,1 @@
+﻿NDSearch.OnPrefixDataLoaded("dur",["Property"],[["Duration",,[["TiledCSPlus.TiledTileAnimation",,,,0,"File:TiledModels.cs:TiledCSPlus.TiledTileAnimation.Duration","CSharpClass:TiledCSPlus.TiledTileAnimation:Duration"]]]]);

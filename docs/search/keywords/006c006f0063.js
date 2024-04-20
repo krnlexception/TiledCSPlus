@@ -1,0 +1,1 @@
+﻿NDSearch.OnPrefixDataLoaded("loc",["Property"],[["Locked",,[["TiledCSPlus.TiledGroup",,,,0,"File:TiledModels.cs:TiledCSPlus.TiledGroup.Locked","CSharpClass:TiledCSPlus.TiledGroup:Locked"],["TiledCSPlus.TiledLayer",,,,0,"File:TiledModels.cs:TiledCSPlus.TiledLayer.Locked","CSharpClass:TiledCSPlus.TiledLayer:Locked"]]]]);

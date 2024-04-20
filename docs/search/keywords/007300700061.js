@@ -1,0 +1,1 @@
+﻿NDSearch.OnPrefixDataLoaded("spa",["Property"],[["Spacing",,[["TiledCSPlus.TiledTileset",,,,0,"File:TiledTileset.cs:TiledCSPlus.TiledTileset.Spacing","CSharpClass:TiledCSPlus.TiledTileset:Spacing"]]]]);

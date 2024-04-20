@@ -1,0 +1,1 @@
+﻿NDSearch.OnPrefixDataLoaded("gro",["Property"],[["Groups",,[["TiledCSPlus.TiledGroup",,,,0,"File:TiledModels.cs:TiledCSPlus.TiledGroup.Groups","CSharpClass:TiledCSPlus.TiledGroup:Groups"],["TiledCSPlus.TiledMap",,,,0,"File:TiledMap.cs:TiledCSPlus.TiledMap.Groups","CSharpClass:TiledCSPlus.TiledMap:Groups"]]]]);

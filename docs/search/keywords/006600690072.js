@@ -1,0 +1,1 @@
+﻿NDSearch.OnPrefixDataLoaded("fir",["Property"],[["FirstGid",,[["TiledCSPlus.TiledMapTileset",,,,0,"File:TiledModels.cs:TiledCSPlus.TiledMapTileset.FirstGid","CSharpClass:TiledCSPlus.TiledMapTileset:FirstGid"]]]]);

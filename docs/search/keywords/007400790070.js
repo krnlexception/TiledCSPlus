@@ -1,0 +1,1 @@
+﻿NDSearch.OnPrefixDataLoaded("typ",["Property"],[["Type",,[["TiledCSPlus.TiledLayer",,,,0,"File:TiledModels.cs:TiledCSPlus.TiledLayer.Type","CSharpClass:TiledCSPlus.TiledLayer:Type"],["TiledCSPlus.TiledProperty",,,,0,"File:TiledModels.cs:TiledCSPlus.TiledProperty.Type","CSharpClass:TiledCSPlus.TiledProperty:Type"]]]]);

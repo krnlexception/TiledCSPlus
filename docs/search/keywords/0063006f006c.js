@@ -1,0 +1,1 @@
+﻿NDSearch.OnPrefixDataLoaded("col",["Class","Property"],[["Color",,[["TiledCSPlus",,,,0,"File:TiledModels.cs:TiledCSPlus.Color","CSharpClass:TiledCSPlus.Color"]]],["Columns",,[["TiledCSPlus.TiledTileset",,,,1,"File:TiledTileset.cs:TiledCSPlus.TiledTileset.Columns","CSharpClass:TiledCSPlus.TiledTileset:Columns"]]]]);

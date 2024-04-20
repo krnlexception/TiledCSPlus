@@ -1,0 +1,1 @@
+﻿NDSearch.OnPrefixDataLoaded("ext",["Class"],[["Extensions",,[["TiledCSPlus",,,,0,"File:Extensions.cs:TiledCSPlus.Extensions","CSharpClass:TiledCSPlus.Extensions"]]]]);

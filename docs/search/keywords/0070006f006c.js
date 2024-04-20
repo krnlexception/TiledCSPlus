@@ -1,0 +1,1 @@
+﻿NDSearch.OnPrefixDataLoaded("pol",["Property"],[["Polygon",,[["TiledCSPlus.TiledObject",,,,0,"File:TiledModels.cs:TiledCSPlus.TiledObject.Polygon","CSharpClass:TiledCSPlus.TiledObject:Polygon"]]]]);

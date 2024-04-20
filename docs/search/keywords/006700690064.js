@@ -1,0 +1,1 @@
+﻿NDSearch.OnPrefixDataLoaded("gid",["Property"],[["Gid",,[["TiledCSPlus.TiledObject",,,,0,"File:TiledModels.cs:TiledCSPlus.TiledObject.Gid","CSharpClass:TiledCSPlus.TiledObject:Gid"]]]]);

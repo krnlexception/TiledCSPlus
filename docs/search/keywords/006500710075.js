@@ -1,0 +1,1 @@
+﻿NDSearch.OnPrefixDataLoaded("equ",["Function"],[["Equals",,[["TiledCSPlus.Color",,,,0,"File:TiledModels.cs:TiledCSPlus.Color.Equals","CSharpClass:TiledCSPlus.Color:Equals"],["TiledCSPlus.Size",,,,0,"File:TiledModels.cs:TiledCSPlus.Size.Equals","CSharpClass:TiledCSPlus.Size:Equals"]]]]);

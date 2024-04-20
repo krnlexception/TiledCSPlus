@@ -1,0 +1,1 @@
+﻿NDSearch.OnPrefixDataLoaded("lay",["Property"],[["Layers",,[["TiledCSPlus.TiledGroup",,,,0,"File:TiledModels.cs:TiledCSPlus.TiledGroup.Layers","CSharpClass:TiledCSPlus.TiledGroup:Layers"],["TiledCSPlus.TiledMap",,,,0,"File:TiledMap.cs:TiledCSPlus.TiledMap.Layers","CSharpClass:TiledCSPlus.TiledMap:Layers"]]]]);

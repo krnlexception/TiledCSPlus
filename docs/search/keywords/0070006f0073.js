@@ -1,0 +1,1 @@
+﻿NDSearch.OnPrefixDataLoaded("pos",["Property"],[["Position",,[["TiledCSPlus.TiledObject",,,,0,"File:TiledModels.cs:TiledCSPlus.TiledObject.Position","CSharpClass:TiledCSPlus.TiledObject:Position"]]]]);

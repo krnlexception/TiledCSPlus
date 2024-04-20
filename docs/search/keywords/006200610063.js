@@ -1,0 +1,1 @@
+﻿NDSearch.OnPrefixDataLoaded("bac",["Property"],[["BackgroundColor",,[["TiledCSPlus.TiledMap",,,,0,"File:TiledMap.cs:TiledCSPlus.TiledMap.BackgroundColor","CSharpClass:TiledCSPlus.TiledMap:BackgroundColor"]]]]);

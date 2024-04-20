@@ -1,0 +1,1 @@
+﻿NDSearch.OnPrefixDataLoaded("emb",["Property"],[["EmbeddedTilesets",,[["TiledCSPlus.TiledMap",,,,0,"File:TiledMap.cs:TiledCSPlus.TiledMap.EmbeddedTilesets","CSharpClass:TiledCSPlus.TiledMap:EmbeddedTilesets"]]]]);

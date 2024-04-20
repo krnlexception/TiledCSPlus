@@ -1,0 +1,1 @@
+﻿NDFramePage.OnPageTitleLoaded("File:Enums.cs","Enums.cs");NDSummary.OnSummaryLoaded("File:Enums.cs",[["C#","CSharp"]],[["Enums","Enumeration"],["Groups","Group"]],[[200,0,1,"Types","TiledCSPlus.Types"],[201,0,0,"TiledLayerType","TiledCSPlus.TiledLayerType"],[202,0,0,"TiledPropertyType","TiledCSPlus.TiledPropertyType"]]);

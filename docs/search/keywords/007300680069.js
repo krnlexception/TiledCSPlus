@@ -1,0 +1,1 @@
+﻿NDSearch.OnPrefixDataLoaded("shi",["Constant"],[["SHIFT_FLIP_FLAG_TO_BYTE",,[["TiledCSPlus.TiledMap",,,,0,"File:TiledMap.cs:TiledCSPlus.TiledMap.SHIFT_FLIP_FLAG_TO_BYTE","CSharpClass:TiledCSPlus.TiledMap:SHIFT_FLIP_FLAG_TO_BYTE"]]]]);

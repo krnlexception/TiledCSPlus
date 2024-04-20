@@ -1,0 +1,1 @@
+﻿NDSearch.OnPrefixDataLoaded("vis",["Property"],[["Visible",,[["TiledCSPlus.TiledGroup",,,,0,"File:TiledModels.cs:TiledCSPlus.TiledGroup.Visible","CSharpClass:TiledCSPlus.TiledGroup:Visible"],["TiledCSPlus.TiledLayer",,,,0,"File:TiledModels.cs:TiledCSPlus.TiledLayer.Visible","CSharpClass:TiledCSPlus.TiledLayer:Visible"]]]]);

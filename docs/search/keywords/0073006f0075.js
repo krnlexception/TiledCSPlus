@@ -1,0 +1,1 @@
+﻿NDSearch.OnPrefixDataLoaded("sou",["Variable","Property"],[["Source",,[["TiledCSPlus.TiledImage",,,,0,"File:TiledModels.cs:TiledCSPlus.TiledImage.Source","CSharpClass:TiledCSPlus.TiledImage:Source"],["TiledCSPlus.TiledMapTileset",,,,1,"File:TiledModels.cs:TiledCSPlus.TiledMapTileset.Source","CSharpClass:TiledCSPlus.TiledMapTileset:Source"]]]]);

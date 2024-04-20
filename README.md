@@ -14,6 +14,10 @@ You can download the package from NuGet here: https://www.nuget.org/packages/Til
 ### DLL library
 Add `TiledCSPlus.dll` as a dependency in your project.
 
+## Documentation
+Full API reference is available at https://nolemretawxd.github.io/TiledCSPlus.
+For examples, see [TiledCSPlus.Examples](TiledCSPlus.Examples) project.
+
 ## Does it break compability?
 **YES**, practically every field was renamed to be in PascalCase, and few fields were combined into one property eg. `offsetX` and `offsetY` into `Vector2` `offset`. Except those few changes, API didn't change much as of now.
 

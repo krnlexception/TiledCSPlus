@@ -1,0 +1,1 @@
+﻿NDSearch.OnPrefixDataLoaded("tin",["Property"],[["TintColor",,[["TiledCSPlus.TiledLayer",,,,0,"File:TiledModels.cs:TiledCSPlus.TiledLayer.TintColor","CSharpClass:TiledCSPlus.TiledLayer:TintColor"]]]]);
