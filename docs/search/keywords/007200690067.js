@@ -1,0 +1,1 @@
+﻿NDSearch.OnPrefixDataLoaded("rig",["Property"],[["Right",,[["TiledCSPlus.TiledTerrainSetTile",,,,0,"File:TiledModels.cs:TiledCSPlus.TiledTerrainSetTile.Right","CSharpClass:TiledCSPlus.TiledTerrainSetTile:Right"]]]]);

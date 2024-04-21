@@ -1,10 +1,12 @@
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Globalization;
 using System.IO;
 using System.IO.Compression;
 using System.Xml;
 using System.Numerics;
+using ZstdSharp;
 
 namespace TiledCSPlus
 {
@@ -109,6 +111,11 @@ namespace TiledCSPlus
         public Dictionary<int, TiledTileset> EmbeddedTilesets { get; internal set; }
 
         /// <summary>
+        /// Returns tile layer format map uses
+        /// </summary>
+        public TiledTileLayerFormat TileLayerFormat { get; internal set; }
+
+        /// <summary>
         /// Returns an empty instance of TiledMap
         /// </summary>
         public TiledMap()
@@ -116,9 +123,9 @@ namespace TiledCSPlus
         }
 
         /// <summary>
-        /// Loads a Tiled map in TMX format and parses it
+        /// Loads a Tiled map and parses it
         /// </summary>
-        /// <param name="path">The path to the tmx file</param>
+        /// <param name="path">The path to the map file</param>
         /// <exception cref="TiledException">Thrown when the map could not be loaded or is not in a correct format</exception>
         public TiledMap(string path)
         {
@@ -130,14 +137,7 @@ namespace TiledCSPlus
 
             var content = File.ReadAllText(path);
 
-            if(path.EndsWith(".tmx"))
-            {
-                ParseXml(content);
-            }
-            else
-            {
-                throw new TiledException("Unsupported file format");
-            }
+            ParseXml(content);
         }
 
         /// <summary>
@@ -244,7 +244,7 @@ namespace TiledCSPlus
             {
                 if(node.Attributes["source"] == null)
                 {
-                    //tilemap is an embedded tilemap
+                    // tilemap is an embedded tilemap
                     TiledTileset tileset = new();
                     tileset.ParseXml(node.OuterXml);
                     int firstgid = int.Parse(node.Attributes["firstgid"].Value);
@@ -393,9 +393,32 @@ namespace TiledCSPlus
             var encoding = nodeData.Attributes["encoding"].Value;
             var compression = nodeData.Attributes["compression"]?.Value;
 
-            if(encoding != "csv" && encoding != "base64")
+            if (encoding == "csv")
             {
-                throw new TiledException("Only CSV and Base64 encodings are currently supported");
+                TileLayerFormat = TiledTileLayerFormat.CSV;
+            } else if(encoding == "base64")
+            {
+                switch (compression)
+                {
+                    case "gzip":
+                        TileLayerFormat = TiledTileLayerFormat.GzipBase64;
+                        break;
+                    case "zlib":
+                        TileLayerFormat = TiledTileLayerFormat.ZlibBase64;
+                        break;
+                    case "zstd":
+                        TileLayerFormat = TiledTileLayerFormat.ZstdBase64;
+                        break;
+                    case null:
+                        TileLayerFormat = TiledTileLayerFormat.Base64;
+                        break;
+                    default:
+                        throw new TiledException($"Unsupported compression format: {compression}");
+                }
+            }
+            else
+            {
+                throw new TiledException($"XML encoding is not supported because it's deprecated");
             }
 
             if(Infinite)
@@ -528,7 +551,30 @@ namespace TiledCSPlus
             }
             else
             {
-                throw new TiledException("Zstandard compression is currently not supported");
+                using var decompressionStream = new DecompressionStream(base64DataStream);
+                // Parse the raw decompressed bytes and update the inner data as well as the data rotation flags
+                var decompressedDataBuffer = new byte[4]; // size of each tile
+                var dataRotationFlagsList = new List<byte>();
+                var layerDataList = new List<int>();
+
+                while(decompressionStream.Read(decompressedDataBuffer, 0, decompressedDataBuffer.Length) ==
+                      decompressedDataBuffer.Length)
+                {
+                    var rawID = BitConverter.ToUInt32(decompressedDataBuffer, 0);
+                    var hor = ((rawID & FLIPPED_HORIZONTALLY_FLAG));
+                    var ver = ((rawID & FLIPPED_VERTICALLY_FLAG));
+                    var dia = ((rawID & FLIPPED_DIAGONALLY_FLAG));
+
+                    dataRotationFlagsList.Add((byte)((hor | ver | dia) >> SHIFT_FLIP_FLAG_TO_BYTE));
+
+                    // assign data to rawID with the rotation flags cleared
+                    layerDataList.Add((int)(rawID &
+                                            ~(FLIPPED_HORIZONTALLY_FLAG | FLIPPED_VERTICALLY_FLAG |
+                                              FLIPPED_DIAGONALLY_FLAG)));
+                }
+
+                data = layerDataList.ToArray();
+                dataRotationFlags = dataRotationFlagsList.ToArray();
             }
         }
 
@@ -668,9 +714,8 @@ namespace TiledCSPlus
             }
 
             return color.Count == 3
-                ? new Color(color[0], color[1], color[2])
-                : new Color(color[1], color[2], color[3], color[0]);
-            ;
+                ? Color.FromArgb(color[0], color[1], color[2])
+                : Color.FromArgb(color[0], color[1], color[2], color[3]);
         }
 
         /* HELPER METHODS */

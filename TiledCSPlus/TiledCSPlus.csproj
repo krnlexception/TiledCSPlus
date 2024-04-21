@@ -2,20 +2,26 @@
 
     <PropertyGroup>
         <TargetFramework>netstandard2.1</TargetFramework>
-        <LangVersion>10.0</LangVersion>
+        <LangVersion>12</LangVersion>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-        <Version>4.0.1</Version>
+        <Version>4.1</Version>
         <Authors>nolemretaW, TheBoneJarmer</Authors>
         <Description>TiledCSPlus is an up to date fork of TiledCS for loading Tiled maps and tilesets</Description>
         <RepositoryUrl>https://github.com/nolemretaWxd/TiledCSPlus</RepositoryUrl>
-        <PackageTags>tiled,tmx,tsx</PackageTags>
-        <PackageReleaseNotes>1.9 compability mode, modernizations and fixes</PackageReleaseNotes>
+        <PackageTags>tiled,tmx,tsx,gamedev,mapmaking,maps</PackageTags>
+        <PackageReleaseNotes>Terrain sets and Zstandard and CSV formats</PackageReleaseNotes>
         <PackageReadmeFile>NuGet.md</PackageReadmeFile>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <AssemblyVersion>4.1.0.0</AssemblyVersion>
+        <FileVersion>4.1.0.0</FileVersion>
     </PropertyGroup>
 
     <ItemGroup>
       <None Include="NuGet.md" Pack="true" PackagePath="\" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="ZstdSharp.Port" Version="0.7.6" />
     </ItemGroup>
 
 </Project>

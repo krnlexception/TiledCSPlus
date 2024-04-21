@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Globalization;
 using System.IO;
 using System.Numerics;
@@ -15,78 +16,83 @@ namespace TiledCSPlus
         /// <summary>
         /// The Tiled version used to create this tileset
         /// </summary>
-        public string TiledVersion { get; set; }
+        public string TiledVersion { get; internal set; }
 
         /// <summary>
         /// The Tiled version this tileset is compatible with
         /// </summary>
-        public string TilesetVersion { get; set; }
+        public string TilesetVersion { get; internal set; }
 
         /// <summary>
         /// The tileset name
         /// </summary>
-        public string Name { get; set; }
+        public string Name { get; internal set; }
 
         /// <summary>
         /// The tileset class
         /// </summary>
-        public string Class { get; set; }
+        public string Class { get; internal set; }
 
         /// <summary>
         /// The tile width in pixels
         /// </summary>
-        public int TileWidth { get; set; }
+        public int TileWidth { get; internal set; }
 
         /// <summary>
         /// The tile height in pixels
         /// </summary>
-        public int TileHeight { get; set; }
+        public int TileHeight { get; internal set; }
 
         /// <summary>
         /// The total amount of tiles
         /// </summary>
-        public int TileCount { get; set; }
+        public int TileCount { get; internal set; }
 
         /// <summary>
         /// The amount of horizontal tiles
         /// </summary>
-        public int Columns { get; set; }
+        public int Columns { get; internal set; }
 
         /// <summary>
         /// The image definition used by the tileset
         /// </summary>
-        public TiledImage Image { get; set; }
+        public TiledImage Image { get; internal set; }
 
         /// <summary>
         /// The amount of spacing between the tiles in pixels
         /// </summary>
-        public int Spacing { get; set; }
+        public int Spacing { get; internal set; }
 
         /// <summary>
         /// The amount of margin between the tiles in pixels
         /// </summary>
-        public int Margin { get; set; }
+        public int Margin { get; internal set; }
 
         /// <summary>
         /// An array of tile definitions
         /// </summary>
         /// <remarks>Not all tiles within a tileset have definitions. Only those with properties, animations, terrains, ...</remarks>
-        public TiledTile[] Tiles { get; set; }
+        public TiledTile[] Tiles { get; internal set; }
 
         /// <summary>
         /// An array of tileset properties
         /// </summary>
-        public TiledProperty[] Properties { get; set; }
+        public TiledProperty[] Properties { get; internal set; }
 
         /// <summary>
         /// The tile offset in pixels
         /// </summary>
-        public Vector2 Offset { get; set; }
+        public Vector2 Offset { get; internal set; }
+
+        /// <summary>
+        /// An array of terrain sets
+        /// </summary>
+        public TiledTerrainSet[] TerrainSets { get; internal set; }
 
         /// <summary>
         /// Returns an empty instance of TiledTileset
         /// </summary>
-        public TiledTileset()
+        internal TiledTileset()
         {
         }
 
@@ -144,6 +150,7 @@ namespace TiledCSPlus
                 var nodeOffset = nodeTileset.SelectSingleNode("tileoffset");
                 var nodesTile = nodeTileset.SelectNodes("tile");
                 var nodesProperty = nodeTileset.SelectNodes("properties/property");
+                var nodesWangsets = nodeTileset.SelectNodes("wangsets/wangset");
 
                 var attrMargin = nodeTileset.Attributes["margin"];
                 var attrSpacing = nodeTileset.Attributes["spacing"];
@@ -165,6 +172,7 @@ namespace TiledCSPlus
 
                 Tiles = ParseTiles(nodesTile);
                 Properties = ParseProperties(nodesProperty);
+                TerrainSets = ParseTerrainSets(nodesWangsets);
             }
             catch(Exception ex)
             {
@@ -357,6 +365,118 @@ namespace TiledCSPlus
             }
 
             return result.ToArray();
+        }
+
+        private TiledTerrainSet[] ParseTerrainSets(XmlNodeList nodeList)
+        {
+            var result = new List<TiledTerrainSet>();
+            foreach (XmlNode node in nodeList)
+            {
+                var nodesProperty = node.SelectNodes("properties/property");
+                var nodesColor = node.SelectNodes("wangcolor");
+                var nodesTile = node.SelectNodes("wangtile");
+
+                var obj = new TiledTerrainSet()
+                {
+                    Name = node.Attributes["name"].Value,
+                    Tile = Int32.Parse(node.Attributes["tile"].Value),
+                    Class = node.Attributes["class"]?.Value
+                };
+
+                if (nodesProperty != null)
+                {
+                    obj.Properties = ParseProperties(nodesProperty);
+                }
+
+                switch (node.Attributes["type"].Value)
+                {
+                    case "corner":
+                        obj.Type = TiledTerrainSetType.Corner;
+                        break;
+                    case "mixed":
+                        obj.Type = TiledTerrainSetType.Mixed;
+                        break;
+                    case "edge":
+                        obj.Type = TiledTerrainSetType.Edge;
+                        break;
+                    default:
+                        throw new TiledException($"Unknown terrain set type: {node.Attributes["type"].Value}");
+                }
+
+                obj.TerrainSetColors = ParseTerrainSetColors(nodesColor);
+                obj.TerrainSetTiles = ParseTerrainSetTiles(nodesTile);
+
+                result.Add(obj);
+            }
+
+            return result.ToArray();
+        }
+
+        private TiledTerrainSetColor[] ParseTerrainSetColors(XmlNodeList nodeList)
+        {
+            var result = new List<TiledTerrainSetColor>();
+            foreach (XmlNode node in nodeList)
+            {
+                var nodesProperty = node.SelectNodes("properties/property");
+
+                var obj = new TiledTerrainSetColor()
+                {
+                    Name = node.Attributes["name"].Value,
+                    Class = node.Attributes["class"]?.Value,
+                    Tile = Int32.Parse(node.Attributes["tile"].Value),
+                    Color = ParseColor(node.Attributes["color"].Value),
+                    Probability = float.Parse(node.Attributes["probability"].Value, CultureInfo.InvariantCulture)
+                };
+
+                if (nodesProperty != null)
+                {
+                    obj.Properties = ParseProperties(nodesProperty);
+                }
+
+                result.Add(obj);
+            }
+
+            return result.ToArray();
+        }
+
+        private Dictionary<int, TiledTerrainSetTile> ParseTerrainSetTiles(XmlNodeList nodeList)
+        {
+            var result = new Dictionary<int, TiledTerrainSetTile>();
+            foreach (XmlNode node in nodeList)
+            {
+                var attrTileid = node.Attributes["tileid"].Value;
+                var attrWangid = node.Attributes["wangid"].Value.Split(",");
+
+                var obj = new TiledTerrainSetTile()
+                {
+                    Top = Int32.Parse(attrWangid[0]),
+                    TopRight = Int32.Parse(attrWangid[1]),
+                    Right = Int32.Parse(attrWangid[2]),
+                    BottomRight = Int32.Parse(attrWangid[3]),
+                    Bottom = Int32.Parse(attrWangid[4]),
+                    BottomLeft = Int32.Parse(attrWangid[5]),
+                    Left = Int32.Parse(attrWangid[6]),
+                    TopLeft = Int32.Parse(attrWangid[7])
+                };
+
+                result.Add(Int32.Parse(attrTileid), obj);
+            }
+
+            return result;
+        }
+
+        private Color ParseColor(string hexColor)
+        {
+            hexColor = hexColor[1..];
+            List<byte> color = new();
+            for(int i = 0; i < hexColor.Length - 1; i += 2)
+            {
+                color.Add(Convert.ToByte(hexColor.Substring(i, 2), 16));
+            }
+
+            return color.Count == 3
+                ? Color.FromArgb(color[0], color[1], color[2])
+                : Color.FromArgb(color[0], color[1], color[2], color[3]);
         }
     }
 }

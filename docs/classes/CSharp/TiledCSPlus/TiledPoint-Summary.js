@@ -1,1 +1,1 @@
-﻿NDFramePage.OnPageTitleLoaded("CSharpClass:TiledCSPlus.TiledPoint","TiledPoint");NDSummary.OnSummaryLoaded("CSharpClass:TiledCSPlus.TiledPoint",[["C#","CSharp"]],[["Classes","Class"]],[[128,0,0,"<span class=\"Qualifier\">TiledCSPlus.</span>&#8203;TiledPoint"]]);
+﻿NDFramePage.OnPageTitleLoaded("CSharpClass:TiledCSPlus.TiledPoint","TiledPoint");NDSummary.OnSummaryLoaded("CSharpClass:TiledCSPlus.TiledPoint",[["C#","CSharp"]],[["Classes","Class"]],[[93,0,0,"<span class=\"Qualifier\">TiledCSPlus.</span>&#8203;TiledPoint"]]);

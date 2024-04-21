@@ -61,4 +61,56 @@ namespace TiledCSPlus
         /// </summary>
         Object
     }
+
+    /// <summary>
+    /// Represents format which tile formats are saved in
+    /// </summary>
+    public enum TiledTileLayerFormat
+    {
+        /// <summary>
+        /// Base64 encoding
+        /// </summary>
+        Base64,
+
+        /// <summary>
+        /// Base64 encoding (Gzip compressed)
+        /// </summary>
+        GzipBase64,
+
+        /// <summary>
+        /// Base64 encoding (zlib compressed)
+        /// </summary>
+        ZlibBase64,
+
+        /// <summary>
+        /// Base64 encoding (Zstandard compressed)
+        /// </summary>
+        ZstdBase64,
+
+        /// <summary>
+        /// No encoding (saved as raw CSV)
+        /// </summary>
+        CSV
+    }
+
+    /// <summary>
+    /// Represents terrain set types
+    /// </summary>
+    public enum TiledTerrainSetType
+    {
+        /// <summary>
+        /// Corner type
+        /// </summary>
+        Corner,
+
+        /// <summary>
+        /// Edge type
+        /// </summary>
+        Edge,
+
+        /// <summary>
+        /// Mixed type
+        /// </summary>
+        Mixed
+    }
 }

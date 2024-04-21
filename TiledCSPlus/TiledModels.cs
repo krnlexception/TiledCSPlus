@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using System.Drawing;
 using System.Numerics;
 
 namespace TiledCSPlus
@@ -8,8 +10,8 @@ namespace TiledCSPlus
     /// </summary>
     public class Size : IEquatable<Size>
     {
-        public float Width { get; set; }
-        public float Height { get; set; }
+        public float Width { get; internal set; }
+        public float Height { get; internal set; }
 
         public Size(float width = 0, float height = 0)
         {
@@ -20,45 +22,6 @@ namespace TiledCSPlus
         public bool Equals(Size other)
         {
             return Width.Equals(other.Width) && Height.Equals(other.Height);
-        }
-    }
-
-    /// <summary>
-    /// Represents a color in RGBA format
-    /// </summary>
-    public class Color : IEquatable<Color>
-    {
-        /// <summary>
-        /// Red channel of the color
-        /// </summary>
-        public byte R { get; set; }
-
-        /// <summary>
-        /// Green channel of the color
-        /// </summary>
-        public byte G { get; set; }
-
-        /// <summary>
-        /// Blue channel of the color
-        /// </summary>
-        public byte B { get; set; }
-
-        /// <summary>
-        /// Alpha channel of the color
-        /// </summary>
-        public byte A { get; set; }
-
-        public Color(byte r, byte g, byte b, byte a = 255)
-        {
-            this.R = r;
-            this.G = g;
-            this.B = b;
-            this.A = a;
-        }
-
-        public bool Equals(Color other)
-        {
-            return R.Equals(other.R) && G.Equals(other.G) && B.Equals(other.B) && A.Equals(other.A);
         }
     }
 
@@ -485,5 +448,128 @@ namespace TiledCSPlus
         /// The chunk's data rotation flags are similar to the data rotation flags array in the TiledLayer class
         /// </summary>
         public byte[] DataRotationFlags { get; internal set; }
+    }
+
+    /// <summary>
+    /// Represents terrain set
+    /// </summary>
+    public class TiledTerrainSet
+    {
+        /// <summary>
+        /// The name of terrain set
+        /// </summary>
+        public string Name { get; internal set; }
+
+        /// <summary>
+        /// The class of terrain set
+        /// </summary>
+        public string Class { get; internal set; }
+
+        /// <summary>
+        /// The tile ID of the tile representing this terrain set
+        /// </summary>
+        public int Tile { get; internal set; }
+
+        /// <summary>
+        /// The terrain set's colors
+        /// </summary>
+        public TiledTerrainSetColor[] TerrainSetColors { get; internal set; }
+
+        /// <summary>
+        /// The terrain set's tiles
+        /// </summary>
+        public Dictionary<int, TiledTerrainSetTile> TerrainSetTiles { get; internal set; }
+
+        /// <summary>
+        /// The terrain set's properties
+        /// </summary>
+        public TiledProperty[] Properties { get; internal set; }
+
+        /// <summary>
+        /// The type of terrain set
+        /// </summary>
+        public TiledTerrainSetType Type { get; internal set; }
+    }
+
+    /// <summary>
+    /// Represents terrain set color
+    /// </summary>
+    public class TiledTerrainSetColor
+    {
+        /// <summary>
+        /// The terrain set color's color
+        /// </summary>
+        public Color Color { get; internal set; }
+
+        /// <summary>
+        /// The terrain set's color name
+        /// </summary>
+        public string Name { get; internal set; }
+
+        /// <summary>
+        /// The terrain set's color class
+        /// </summary>
+        public string Class { get; internal set; }
+
+        /// <summary>
+        /// The tile ID chosen as color icon
+        /// </summary>
+        public int Tile { get; internal set; }
+
+        /// <summary>
+        /// The terrain set's color probability
+        /// </summary>
+        public float Probability { get; internal set; }
+
+        /// <summary>
+        /// The terrain set's color properties
+        /// </summary>
+        public TiledProperty[] Properties { get; internal set; }
+    }
+
+    /// <summary>
+    /// Represents terrain set's single tile
+    /// </summary>
+    public class TiledTerrainSetTile
+    {
+        /// <summary>
+        /// Top color of terrain set tile
+        /// </summary>
+        public int Top { get; internal set; }
+
+        /// <summary>
+        /// Top right color of terrain set tile
+        /// </summary>
+        public int TopRight { get; internal set; }
+
+        /// <summary>
+        /// Right color of terrain set tile
+        /// </summary>
+        public int Right { get; internal set; }
+
+        /// <summary>
+        /// Bottom right color of terrain set tile
+        /// </summary>
+        public int BottomRight { get; internal set; }
+
+        /// <summary>
+        /// Bottom color of terrain set tile
+        /// </summary>
+        public int Bottom { get; internal set; }
+
+        /// <summary>
+        /// Bottom left color of terrain set tile
+        /// </summary>
+        public int BottomLeft { get; internal set; }
+
+        /// <summary>
+        /// Left color of terrain set tile
+        /// </summary>
+        public int Left { get; internal set; }
+
+        /// <summary>
+        /// Top left color of terrain set tile
+        /// </summary>
+        public int TopLeft { get; internal set; }
     }
 }
