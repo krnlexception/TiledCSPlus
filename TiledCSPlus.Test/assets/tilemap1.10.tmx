@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="10" height="10" tilewidth="16" tileheight="16" infinite="0" backgroundcolor="#04010203" nextlayerid="5" nextobjectid="2">
+<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="10" height="10" tilewidth="16" tileheight="16" infinite="0" backgroundcolor="#04010203" nextlayerid="5" nextobjectid="4">
+ <properties>
+  <property name="a" type="class" propertytype="Class0">
+   <properties>
+    <property name="a" value="1"/>
+    <property name="b" value="2"/>
+   </properties>
+  </property>
+  <property name="b" propertytype="cc" value="a,c,cc_5"/>
+ </properties>
  <tileset firstgid="1" source="tileset.tsx"/>
  <tileset firstgid="2" name="tileset-embedded110" tilewidth="16" tileheight="16" tilecount="1" columns="1">
   <image source="tileset.png" width="16" height="16"/>
@@ -11,6 +20,12 @@
  </layer>
  <objectgroup id="2" name="Object Layer 1">
   <object id="1" type="test110" x="14.8123" y="15.0866" width="129.196" height="129.196"/>
+  <object id="2" x="59.4213" y="7.29095">
+   <polygon points="0,0 49.5785,-0.364548 48.8494,25.1538 4.37457,21.5083"/>
+  </object>
+  <object id="3" x="50.3076" y="148.371">
+   <polyline points="0,0 47.7558,3.64548"/>
+  </object>
  </objectgroup>
  <imagelayer id="3" name="Image Layer 1"/>
  <group id="4" name="Group Layer 1"/>

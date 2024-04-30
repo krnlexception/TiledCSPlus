@@ -227,6 +227,11 @@ namespace TiledCSPlus
         public TiledPolygon Polygon { get; internal set; }
 
         /// <summary>
+        /// If an object was set to a polyline shape, this property will be set and can be used to access the polyline's data
+        /// </summary>
+        public TiledPolyline Polyline { get; internal set; }
+
+        /// <summary>
         /// If an object was set to a point shape, this property will be set
         /// </summary>
         public TiledPoint Point { get; internal set; }
@@ -244,6 +249,17 @@ namespace TiledCSPlus
     {
         /// <summary>
         /// The array of vertices represented in Vector2 format.
+        /// </summary>
+        public Vector2[] Points { get; internal set; }
+    }
+
+    /// <summary>
+    /// Represents a poly line shape
+    /// </summary>
+    public class TiledPolyline
+    {
+        /// <summary>
+        /// The array of vertices where each two elements represent an x and y position. Like 'x,y,x,y,x,y,x,y'.
         /// </summary>
         public Vector2[] Points { get; internal set; }
     }

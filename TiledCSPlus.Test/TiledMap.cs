@@ -42,7 +42,6 @@ public class TiledMapTest
     {
         TiledMap?.Layers[0].TintColor.ShouldBe(Color.FromArgb(252, 255, 254, 253));
         TiledMap?.Layers[2].Name.ShouldBe("Image Layer 1");
-        TiledMap?.Layers[1].Objects[0].Class.ShouldBe("test110");
     }
 
     [Test]
@@ -57,5 +56,29 @@ public class TiledMapTest
     {
         TiledMap19?.TileLayerFormat.ShouldBe(TiledTileLayerFormat.GzipBase64);
         TiledMap?.TileLayerFormat.ShouldBe(TiledTileLayerFormat.ZstdBase64);
+    }
+
+    [Test]
+    public void Objects()
+    {
+        TiledMap?.Layers[1].Objects[0].Class.ShouldBe("test110");
+
+        TiledMap?.Layers[1].Objects[1].Polygon.Points[0].X.ShouldBe(0);
+        TiledMap?.Layers[1].Objects[1].Polygon.Points[0].Y.ShouldBe(0);
+
+        TiledMap?.Layers[1].Objects[1].Polygon.Points[1].X.ShouldBe(49.5785f);
+        TiledMap?.Layers[1].Objects[1].Polygon.Points[1].Y.ShouldBe(-0.364548f);
+
+        TiledMap?.Layers[1].Objects[1].Polygon.Points[2].X.ShouldBe(48.8494f);
+        TiledMap?.Layers[1].Objects[1].Polygon.Points[2].Y.ShouldBe(25.1538f);
+
+        TiledMap?.Layers[1].Objects[1].Polygon.Points[3].X.ShouldBe(4.37457f);
+        TiledMap?.Layers[1].Objects[1].Polygon.Points[3].Y.ShouldBe(21.5083f);
+
+        TiledMap?.Layers[1].Objects[2].Polyline.Points[0].X.ShouldBe(0);
+        TiledMap?.Layers[1].Objects[2].Polyline.Points[0].Y.ShouldBe(0);
+
+        TiledMap?.Layers[1].Objects[2].Polyline.Points[1].X.ShouldBe(47.7558f);
+        TiledMap?.Layers[1].Objects[2].Polyline.Points[1].Y.ShouldBe(3.64548f);
     }
 }

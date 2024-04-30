@@ -10,5 +10,49 @@
     "properties": [
     ],
     "propertyTypes": [
+        {
+            "id": 2,
+            "name": "cc",
+            "storageType": "string",
+            "type": "enum",
+            "values": [
+                "a",
+                "b",
+                "c",
+                "d",
+                "cc_5"
+            ],
+            "valuesAsFlags": true
+        },
+        {
+            "color": "#ffa0a0a4",
+            "drawFill": true,
+            "id": 1,
+            "members": [
+                {
+                    "name": "a",
+                    "type": "string",
+                    "value": ""
+                },
+                {
+                    "name": "b",
+                    "type": "string",
+                    "value": ""
+                }
+            ],
+            "name": "Class0",
+            "type": "class",
+            "useAs": [
+                "property",
+                "map",
+                "layer",
+                "object",
+                "tile",
+                "tileset",
+                "wangcolor",
+                "wangset",
+                "project"
+            ]
+        }
     ]
 }

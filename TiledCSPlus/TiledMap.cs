@@ -620,6 +620,7 @@ namespace TiledCSPlus
             {
                 var nodesProperty = node.SelectNodes("properties/property");
                 var nodePolygon = node.SelectSingleNode("polygon");
+                var nodePolyline = node.SelectSingleNode("polyline");
                 var nodePoint = node.SelectSingleNode("point");
                 var nodeEllipse = node.SelectSingleNode("ellipse");
                 var attrGid = node.Attributes["gid"];
@@ -658,6 +659,23 @@ namespace TiledCSPlus
                     }
 
                     obj.Polygon = polygon;
+                }
+
+                if (nodePolyline != null)
+                {
+                    var points = nodePolyline.Attributes["points"].Value;
+                    var vertices = points.Split(' ');
+
+                    var polyline = new TiledPolyline() { Points = new Vector2[vertices.Length] };
+
+                    for (var i = 0; i < vertices.Length; i++)
+                    {
+                        polyline.Points[i] =
+                            new Vector2(float.Parse(vertices[i].Split(',')[0], CultureInfo.InvariantCulture),
+                                float.Parse(vertices[i].Split(',')[1], CultureInfo.InvariantCulture));
+                    }
+
+                    obj.Polyline = polyline;
                 }
 
                 if(nodeEllipse != null)
