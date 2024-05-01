@@ -311,7 +311,8 @@ namespace TiledCSPlus
                     Class = TilesetVersion == "1.9" ? node.Attributes["class"]?.Value : node.Attributes["type"]?.Value,
                     Gid = int.Parse(node.Attributes["gid"]?.Value ?? "0"),
                     Position = new Vector2(float.Parse(node.Attributes["x"].Value, CultureInfo.InvariantCulture),
-                        float.Parse(node.Attributes["y"].Value, CultureInfo.InvariantCulture))
+                        float.Parse(node.Attributes["y"].Value, CultureInfo.InvariantCulture)),
+                    Type = TiledObjectType.Rectangular
                 };
 
                 if(nodesProperty != null)
@@ -334,6 +335,7 @@ namespace TiledCSPlus
                     }
 
                     obj.Polygon = polygon;
+                    obj.Type = TiledObjectType.Polygon;
                 }
 
                 if (nodePolyline != null)
@@ -351,28 +353,30 @@ namespace TiledCSPlus
                     }
 
                     obj.Polyline = polyline;
+                    obj.Type = TiledObjectType.Polyline;
                 }
 
                 if(nodeEllipse != null)
                 {
-                    obj.Ellipse = new TiledEllipse();
+                    obj.Type = TiledObjectType.Eclipse;
                 }
 
                 if(nodePoint != null)
                 {
-                    obj.Point = new TiledPoint();
+                    obj.Type = TiledObjectType.Point;
                 }
 
-                if(node.Attributes["width"] != null || node.Attributes["height"] != null) obj.Size = new Size();
+                Vector2 size = new Vector2();
                 if(node.Attributes["width"] != null)
                 {
-                    obj.Size.Width = float.Parse(node.Attributes["width"].Value, CultureInfo.InvariantCulture);
+                    size.X = float.Parse(node.Attributes["width"].Value, CultureInfo.InvariantCulture);
                 }
 
                 if(node.Attributes["height"] != null)
                 {
-                    obj.Size.Height = float.Parse(node.Attributes["height"].Value, CultureInfo.InvariantCulture);
+                    size.Y = float.Parse(node.Attributes["height"].Value, CultureInfo.InvariantCulture);
                 }
+                if (node.Attributes["width"] != null || node.Attributes["height"] != null) obj.Size = size;
 
                 if(node.Attributes["rotation"] != null)
                 {

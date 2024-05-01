@@ -6,26 +6,6 @@ using System.Numerics;
 namespace TiledCSPlus
 {
     /// <summary>
-    /// Represents a size
-    /// </summary>
-    public class Size : IEquatable<Size>
-    {
-        public float Width { get; internal set; }
-        public float Height { get; internal set; }
-
-        public Size(float width = 0, float height = 0)
-        {
-            this.Width = width;
-            this.Height = height;
-        }
-
-        public bool Equals(Size other)
-        {
-            return Width.Equals(other.Width) && Height.Equals(other.Height);
-        }
-    }
-
-    /// <summary>
     /// Represents an element within the Tilesets array of a TiledMap object
     /// </summary>
     public class TiledMapTileset
@@ -115,12 +95,12 @@ namespace TiledCSPlus
         /// <summary>
         /// Layer offset
         /// </summary>
-        public Vector2 Offset;
+        public Vector2 Offset { get; internal set; }
 
         /// <summary>
         /// Parallax position
         /// </summary>
-        public Vector2 Parrallax;
+        public Vector2 Parallax { get; internal set; }
 
         /// <summary>
         /// The layer opacity
@@ -200,7 +180,12 @@ namespace TiledCSPlus
         /// <summary>
         /// Object's size in pixels
         /// </summary>
-        public Size Size { get; internal set; }
+        public Vector2 Size { get; internal set; }
+
+        /// <summary>
+        /// Object type
+        /// </summary>
+        public TiledObjectType Type { get; internal set; }
 
         /// <summary>
         /// The tileset gid when the object is linked to a tile
@@ -230,16 +215,6 @@ namespace TiledCSPlus
         /// If an object was set to a polyline shape, this property will be set and can be used to access the polyline's data
         /// </summary>
         public TiledPolyline Polyline { get; internal set; }
-
-        /// <summary>
-        /// If an object was set to a point shape, this property will be set
-        /// </summary>
-        public TiledPoint Point { get; internal set; }
-
-        /// <summary>
-        /// If an object was set to an ellipse shape, this property will be set
-        /// </summary>
-        public TiledEllipse Ellipse { get; internal set; }
     }
 
     /// <summary>
@@ -262,20 +237,6 @@ namespace TiledCSPlus
         /// The array of vertices where each two elements represent an x and y position. Like 'x,y,x,y,x,y,x,y'.
         /// </summary>
         public Vector2[] Points { get; internal set; }
-    }
-
-    /// <summary>
-    /// Represents a point shape
-    /// </summary>
-    public class TiledPoint
-    {
-    }
-
-    /// <summary>
-    /// Represents an ellipse shape
-    /// </summary>
-    public class TiledEllipse
-    {
     }
 
     /// <summary>
@@ -339,7 +300,7 @@ namespace TiledCSPlus
         /// <summary>
         /// The image source path
         /// </summary>
-        public string Source;
+        public string Source { get; internal set; }
     }
 
     /// <summary>
@@ -587,5 +548,41 @@ namespace TiledCSPlus
         /// Top left color of terrain set tile
         /// </summary>
         public int TopLeft { get; internal set; }
+    }
+
+    /// <summary>
+    /// Represents object types in Tiled
+    /// </summary>
+    public enum TiledObjectType
+    {
+        /// <summary>
+        /// Point object type
+        /// </summary>
+        Point,
+
+        /// <summary>
+        /// Eclipse object type
+        /// </summary>
+        Eclipse,
+
+        /// <summary>
+        /// Polygon object type
+        /// </summary>
+        Polygon,
+
+        /// <summary>
+        /// Polyline object type (used when polygon object is not closed)
+        /// </summary>
+        Polyline,
+
+        /// <summary>
+        /// Tile object type
+        /// </summary>
+        Tile,
+
+        /// <summary>
+        /// Rectangular object type
+        /// </summary>
+        Rectangular
     }
 }
