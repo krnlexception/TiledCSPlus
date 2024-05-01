@@ -1,1 +1,0 @@
-﻿NDSearch.OnPrefixDataLoaded("ell",["Property"],[["Ellipse",,[["TiledCSPlus.TiledObject",,,,0,"File:TiledModels.cs:TiledCSPlus.TiledObject.Ellipse","CSharpClass:TiledCSPlus.TiledObject:Ellipse"]]]]);

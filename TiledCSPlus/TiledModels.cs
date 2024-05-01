@@ -549,40 +549,4 @@ namespace TiledCSPlus
         /// </summary>
         public int TopLeft { get; internal set; }
     }
-
-    /// <summary>
-    /// Represents object types in Tiled
-    /// </summary>
-    public enum TiledObjectType
-    {
-        /// <summary>
-        /// Point object type
-        /// </summary>
-        Point,
-
-        /// <summary>
-        /// Eclipse object type
-        /// </summary>
-        Eclipse,
-
-        /// <summary>
-        /// Polygon object type
-        /// </summary>
-        Polygon,
-
-        /// <summary>
-        /// Polyline object type (used when polygon object is not closed)
-        /// </summary>
-        Polyline,
-
-        /// <summary>
-        /// Tile object type
-        /// </summary>
-        Tile,
-
-        /// <summary>
-        /// Rectangular object type
-        /// </summary>
-        Rectangular
-    }
 }

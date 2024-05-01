@@ -1,1 +1,0 @@
-﻿NDFramePage.OnPageTitleLoaded("CSharpClass:TiledCSPlus.Size","Size");NDSummary.OnSummaryLoaded("CSharpClass:TiledCSPlus.Size",[["C#","CSharp"]],[["Classes","Class"]],[[37,0,0,"<span class=\"Qualifier\">TiledCSPlus.</span>&#8203;Size"]]);
