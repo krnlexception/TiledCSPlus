@@ -9,7 +9,7 @@ You can download the package from NuGet here: https://www.nuget.org/packages/Til
 Add `TiledCSPlus.dll` as a dependency in your project.
 
 ## Documentation
-Full API reference is available at https://nolemretawxd.github.io/TiledCSPlus.
+Full API reference is available at [https://nolemretawxd.github.io/TiledCSPlus](https://krnlexception.github.io/TiledCSPlus/).
 For examples, see [TiledCSPlus.Example](TiledCSPlus.Example) project.
 
 ## Supported versions
